@@ -1,17 +1,11 @@
-const currency = require('./currency.js')
 
-const settings = require('./settings.json');
 
-let USDollarsAmount = 100;
+const Currency = require('./currency.js');
 
-let canadianDollarsAmount = currency.USToCanadian(USDollarsAmount);
+const canadianDollar = 0.91;
 
-console.log('canadian dollars amount: ', canadianDollarsAmount);
+const currency = new Currency(canadianDollar);
 
-canadianDollarsAmount = 100;
+console.log(currency.canadianToUS(100));
 
-USDollarsAmount = currency.canadianToUS(canadianDollarsAmount);
 
-console.log('us dollar amount: ', USDollarsAmount);
-
-console.log('port: ', settings.port);
