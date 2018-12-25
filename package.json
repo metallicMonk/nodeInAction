@@ -1,0 +1,22 @@
+{
+  "name": "nodeInAction",
+  "version": "1.0.0",
+  "description": "Node in action. Great book",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "simple-server": "node simple-server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/metallicMonk/nodeInAction.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/metallicMonk/nodeInAction/issues"
+  },
+  "homepage": "https://github.com/metallicMonk/nodeInAction#readme",
+  "dependencies": {}
+}
