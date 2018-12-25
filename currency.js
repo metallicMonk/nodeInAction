@@ -1,8 +1,21 @@
-const canadianDollar = 0.91;
 
-function roundTwo(amount) {
-    return Math.round(amount * 100) / 100;
+class Currency {
+
+    constructor(canadianDollar) {
+        this.canadianDollar = canadianDollar;
+    }
+
+    roundTwoDecimals(amount) {
+        return Math.round(amount * 100) / 100;
+    }
+
+    canadianToUS(canadian) {
+        return this.roundTwoDecimals(canadian * this.canadianDollar);
+    }
+
+    USToCanadian(us) {
+        return this.roundTwoDecimals(us / this.canadianDollar);
+    }
 }
 
-exports.canadianToUS = canadian => roundTwo(canadian * canadianDollar);
-exports.USToCanadian = us => roundTwo(us / canadianDollar);
+module.exports = Currency;
