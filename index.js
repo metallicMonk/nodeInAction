@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const fs = require('fs');
 
 const settings = require('./settings.json');
@@ -8,7 +10,7 @@ settings.port = 4444;
 
 fs.writeFileSync('./settings.json', JSON.stringify(settings));
 
-const st = require('./settings.json');
+const some = require('./some.js');
 
-console.log(st);
+some.printSettings();
 
