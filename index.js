@@ -1,11 +1,14 @@
+const fs = require('fs');
 
+const settings = require('./settings.json');
 
-const Currency = require('./currency.js');
+console.log(settings); // {"port":30}
 
-const canadianDollar = 0.91;
+settings.port = 4444;
 
-const currency = new Currency(canadianDollar);
+fs.writeFileSync('./settings.json', JSON.stringify(settings));
 
-console.log(currency.canadianToUS(100));
+const st = require('./settings.json');
 
+console.log(st);
 
