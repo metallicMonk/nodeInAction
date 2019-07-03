@@ -1,10 +1,16 @@
 
 const http = require("http");
 
-http.createServer(function(request, response) {
+function requestListener(req, res) {
+    
+    res.end("Server response");
+}
 
-    response.end("Server response.");
-}).listen(3000, "127.0.0.1", function(){
+const server = http.createServer(requestListener);
 
-    console.log("Server listening on 3000");
-});
+function startupLogger() {
+
+    console.log("Server lisening on 3000");
+}
+
+server.listen(3000, startupLogger);
