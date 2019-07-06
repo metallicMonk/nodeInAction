@@ -1,13 +1,17 @@
 
 
-const User = require('./user');
 
 
-const Simon = new User('Simon', 33);
+const welcome = require('./welcome');
+
+welcome.getMorningMessage();
+welcome.gitEveningMessage();
 
 
 
-console.log(Simon.getCreationDate());
+
+
+
 
 
 
