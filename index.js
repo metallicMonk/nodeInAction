@@ -1,8 +1,14 @@
 
 
 
-const greeting = require('./greeting');
+const User = require('./user');
 
-const result = greeting.someModule.someFunc(2, 4);
 
-const stop = true;
+const Simon = new User('Simon', 33);
+
+Simon.sayHi();
+
+
+Simon.displayInfo();
+
+debugger;
