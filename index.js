@@ -1,8 +1,27 @@
 
 
-const whereIsNode = process.argv[0];
-const whereIsApp = process.argv[1];
+const src = require('./src');
 
 
 
-debugger;   // evaluate two constants
+const express = require('express');
+
+
+
+const server = express();
+
+server.get('/', function(req, res) {
+
+    try {
+        res.send(src.getLocalizenValue(req.query.Variable, req.query.Language));
+    } catch (error) {
+        res.send(error.message);        
+    }
+
+});
+
+server.listen(3000, 'localhost', function() {
+
+    console.log('server listening on 3000');
+});
+
