@@ -1,21 +1,25 @@
 
 
+function display(data, callback) {
 
-function showMessage(message, callback) {
+    const randInt = Math.random() * (10 - 1) + 1;
 
-    console.log(message);
+    const err = randInt > 5 ? new Error("randInt > 5!") : null;
+
     
-    setTimeout(callback, 2000);
+    setTimeout(function() {
+
+        callback(err, data);
+    }, 0);
 }
 
 
 console.log('1');
 
+display('2', function(err, data) {
 
-showMessage('2', function() {
-
-    console.log('callback');
+    if (err) console.log(err);
+    console.log(data);
 });
-
 
 console.log('3');
