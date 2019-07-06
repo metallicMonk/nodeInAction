@@ -20,3 +20,8 @@ module.exports.getMessage = function(name) {
         return "Good morning " + name;
     }
 }
+
+const someModule = require('./someModule');
+
+module.exports.someModule = someModule;
+
