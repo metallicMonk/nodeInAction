@@ -1,32 +1,21 @@
 
-/*
 
 const http = require('http');
 
-http.createServer(function(request, response) {
 
-    response.end('Server works');
-}).listen(3000, '127.0.0.1', function() {
+const hostname = '127.0.0.1';
+const port = 3000;
 
-    console.log('Starting server...');
+
+const server = http.createServer((req, res) => {
+
+    res.statusCode = 200;
+    res.setHeader('Content-Type', 'text/plain');
+    res.end('Hello, World\n');
 });
 
-*/
+server.listen(port, hostname, () => {
 
-const http = require('http');
-
-
-function onStart(startupMessage) { 
-
-    console.log(startupMessage);
-}
-
-function handler(req, res) {
-
-    res.end('Operation successfull!');
-}
-
-const server = http.createServer(handler);
-
-server.listen(3000, '127.0.0.1', onStart('Server started...'));
+    console.log(`Server funning at http://${hostname}:${port}`);
+})
 
