@@ -1,16 +1,32 @@
 
-const http = require("http");
+/*
 
-function requestListener(req, res) {
-    
-    res.end("Server response");
+const http = require('http');
+
+http.createServer(function(request, response) {
+
+    response.end('Server works');
+}).listen(3000, '127.0.0.1', function() {
+
+    console.log('Starting server...');
+});
+
+*/
+
+const http = require('http');
+
+
+function onStart(startupMessage) { 
+
+    console.log(startupMessage);
 }
 
-const server = http.createServer(requestListener);
+function handler(req, res) {
 
-function startupLogger() {
-
-    console.log("Server lisening on 3000");
+    res.end('Operation successfull!');
 }
 
-server.listen(3000, startupLogger);
+const server = http.createServer(handler);
+
+server.listen(3000, '127.0.0.1', onStart('Server started...'));
+
