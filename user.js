@@ -4,22 +4,23 @@ function User(name, age) {
 
     this.name = name;
     this.age = age;
+    this.creationTime = new Date();
 
-    this.displayInfo = function() {
+    this.setter = function(name, age) {
 
-        console.log(`Name: ${this.name}, age: ${this.age}`);
+        this.name = name;
+        this.age = age;
     }
+
+    this.getter = function() { return `{ "name":${this.name}, "age":${this.age}`; }
+
 }
 
 
 
-User.prototype.sayHi = function() {
+User.prototype.getCreationDate = function() {
 
-    console.log(`Hi, my name is ${this.name}`);
+    return this.creationTime;
 }
-
-
 
 module.exports = User;
-
-module.exports.date = new Date();
