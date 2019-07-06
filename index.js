@@ -1,27 +1,21 @@
 
 
-const src = require('./src');
+
+function showMessage(message, callback) {
+
+    console.log(message);
+    
+    setTimeout(callback, 2000);
+}
 
 
-
-const express = require('express');
-
+console.log('1');
 
 
-const server = express();
+showMessage('2', function() {
 
-server.get('/', function(req, res) {
-
-    try {
-        res.send(src.getLocalizenValue(req.query.Variable, req.query.Language));
-    } catch (error) {
-        res.send(error.message);        
-    }
-
+    console.log('callback');
 });
 
-server.listen(3000, 'localhost', function() {
 
-    console.log('server listening on 3000');
-});
-
+console.log('3');

@@ -18,8 +18,5 @@
     "url": "https://github.com/metallicMonk/nodeInAction/issues"
   },
   "homepage": "https://github.com/metallicMonk/nodeInAction#readme",
-  "dependencies": {
-    "express": "^4.17.1",
-    "nodemon": "^1.19.1"
-  }
+  "dependencies": {}
 }
