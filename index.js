@@ -1,10 +1,8 @@
 
 
-const lib = require('./lib');
+const whereIsNode = process.argv[0];
+const whereIsApp = process.argv[1];
 
 
-global.str = 'string from main file "index.js"';
 
-
-console.log(global.str);
-
+debugger;   // evaluate two constants
