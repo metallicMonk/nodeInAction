@@ -1,18 +1,10 @@
 
 
+const lib = require('./lib');
 
 
-const welcome = require('./welcome');
-
-welcome.getMorningMessage();
-welcome.gitEveningMessage();
+global.str = 'string from main file "index.js"';
 
 
-
-
-
-
-
-
-
+console.log(global.str);
 
