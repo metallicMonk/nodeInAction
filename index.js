@@ -1,16 +1,13 @@
 
-const fs = require('fs');
+const EventEmitter = require('events');
 
+class MyEvitter extends EventEmitter {}
 
-fs.readFile('hello.txt', 'utf-8', function(err, data) {
+const myEmitter = new MyEvitter();
 
-    if (err) throw err;
-    console.log('Asynchronous')
-    console.log(data);
-});
+myEmitter.on('event', function() {
 
-content = fs.readFileSync('hello.txt', 'utf-8');
+    console.log('an event occured!');
+})
 
-console.log('Synchronous');
-console.log(content);
-
+myEmitter.emit('event');
