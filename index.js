@@ -1,25 +1,16 @@
 
-
-function display(data, callback) {
-
-    const randInt = Math.random() * (10 - 1) + 1;
-
-    const err = randInt > 5 ? new Error("randInt > 5!") : null;
-
-    
-    setTimeout(function() {
-
-        callback(err, data);
-    }, 0);
-}
+const fs = require('fs');
 
 
-console.log('1');
+fs.readFile('hello.txt', 'utf-8', function(err, data) {
 
-display('2', function(err, data) {
-
-    if (err) console.log(err);
+    if (err) throw err;
+    console.log('Asynchronous')
     console.log(data);
 });
 
-console.log('3');
+content = fs.readFileSync('hello.txt', 'utf-8');
+
+console.log('Synchronous');
+console.log(content);
+
