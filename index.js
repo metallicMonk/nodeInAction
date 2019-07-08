@@ -1,11 +1,20 @@
 
-const Emitter = require('events');
-let emitter = new Emitter();
-let eventName = 'greet';
+const EventEmitter = require('events');
 
-emitter.on(eventName, function(data) {
+let eventName = "greet";
+
+class User extends EventEmitter {
+
+	sayHi(data) {
+		this.emit(eventName, data);
+	}
+}
+
+let user = new User();
+
+user.on(eventName, function(data) {
 	console.log(data);
-});
+})
 
-emitter.emit(eventName, "Hello!");
+user.sayHi("I need your cloth...");
 
