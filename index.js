@@ -1,12 +1,14 @@
-const EventEmitter = require('events');
 
-class MyEvitter extends EventEmitter {}
+const Emitter = require('events');
+let emitter = new Emitter();
+let eventName = "greet";
 
-const myEmitter = new MyEvitter();
+emitter.on(eventName, function() {
+	console.log("Hello all!");
+});
 
-myEmitter.on('event', function() {
+emitter.on(eventName, function() {
+	console.log("Hello all 2!");
+});
 
-    console.log('an event occured!');
-})
-
-myEmitter.emit('event');
+emitter.emit(eventName);
