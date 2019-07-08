@@ -1,15 +1,18 @@
 
+
+
 const fs = require('fs');
 
-let writableStream = fs.createWriteStream("hello.txt");
 
-writableStream.write("Hello world");
-writableStream.write("One more sentense to the stream...\n");
-writableStream.end("Ending of stream");
 
-let readableStream = fs.createReadStream("hello.txt", "utf8");
+let readableDataStream = fs.createReadStream('hello.txt', 'utf8');
+let writeableDataStream = fs.createWriteStream('some.txt');
 
-readableStream.on("data", function(chunk) {
-	console.log(chunk);
+/********************************************************************************
+readableDataStream.on('data', function(chunk) {
+	writeableDataStream.write(chunk);
 })
+********************************************************************************/
+
+readableDataStream.pipe(writeableDataStream);
 
