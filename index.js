@@ -9,12 +9,15 @@ function handler(req, res) {
 	
 	const url = req.url;
 
-	if (url === "/home" || url === "/") {
-		res.write("<h1>Home</h1>");
-	} else if (url == "/about") {
-		res.write("<h1>About</h1>");
+	if (url === "/") {
+		res.statusCode = 302;
+		res.setHeader("Location", "/newpage");
+	}
+	else if (url == "/newpage") {
+		res.write("New address");
 	} else {
-		res.write("<h1>Unknown!</h1>");
+		res.write("Not found");
+		res.statusCode = 404;
 	}
 
 	res.end();
