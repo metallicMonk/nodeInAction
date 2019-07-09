@@ -7,12 +7,14 @@ function handler(req, res) {
 
 	console.log(`Requested address: ${req.url}`);
 	const filePath = req.url.substr(1);
-	fs.access(filePath, fs.constants.R_OK, err => {
-		if(err) {
+	
+	fs.readFile(filePath, function(err, data) {
+
+		if (err) {
 			res.statusCode = 404;
 			res.end("Resourse not found");
 		} else {
-			fs.createReadStream(filePath).pipe(res);
+			res.end(data);
 		}
 	});
 }
