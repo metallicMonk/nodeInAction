@@ -1,18 +1,16 @@
 
+const http = require('http');
 
 
-const fs = require('fs');
+function handler(req, res) {
 
+	res.setHeader("UserId", 333);
+	res.setHeader("Content-Type", "text/html; charset=utf-8;");
+	res.write("<h2>Hi there!</h2>");
 
+	res.end();
+}
 
-let readableDataStream = fs.createReadStream('hello.txt', 'utf8');
-let writeableDataStream = fs.createWriteStream('some.txt');
+server = http.createServer(handler);
 
-/********************************************************************************
-readableDataStream.on('data', function(chunk) {
-	writeableDataStream.write(chunk);
-})
-********************************************************************************/
-
-readableDataStream.pipe(writeableDataStream);
-
+server.listen(3000);
