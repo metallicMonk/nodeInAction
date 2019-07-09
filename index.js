@@ -1,28 +1,25 @@
 
 const http = require('http');
 
+const fs = require('fs');
 
 function handler(req, res) {
 
-	
-	res.setHeader("Content-Type", "text/html; charset=utf-8;");
-	
-	const url = req.url;
-
-	if (url === "/") {
-		res.statusCode = 302;
-		res.setHeader("Location", "/newpage");
-	}
-	else if (url == "/newpage") {
-		res.write("New address");
-	} else {
-		res.write("Not found");
-		res.statusCode = 404;
-	}
-
-	res.end();
+	console.log(`Requested address: ${req.url}`);
+	const filePath = req.url.substr(1);
+	fs.access(filePath, fs.constants.R_OK, err => {
+		if(err) {
+			res.statusCode = 404;
+			res.end("Resourse not found");
+		} else {
+			fs.createReadStream(filePath).pipe(res);
+		}
+	});
 }
 
-server = http.createServer(handler);
+const server = http.createServer(handler);
 
-server.listen(3000);
+server.listen(3000, function() {
+	console.log("server started at 3000");
+});
+
