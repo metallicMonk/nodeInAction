@@ -1,24 +1,23 @@
 
-const express = require('express');
+const app = require('express')();
+const fs = require('fs');
 
-const app = express();
+app.use(function (request, response, next) {
+    let now = new Date();
+    let hour = now.getHours();
+    let minute = now.getMinutes();
+    let seconds = now.getSeconds();
+    let data = `${hour}:${minute}:${seconds} ${request.method} ${request.url} ${request.get('user-agent')}`;
 
-app.use(function (request, response) {
-    console.log('middleware 1');
-    request.next();
-});
-
-app.use(function (request, response) {
-    console.log('middleware 2');
-    request.next();
+    console.log(data);
+    fs.appendFile('server.log', data + '\n', function () { });
+    next();
 });
 
 app.get('/', function (request, response) {
-    console.log('Route /');
-    response.send({ "response": "some response" });
+    response.send('Get route /');
 });
 
 app.listen(3000, function () {
-    console.log('Listening on 3000');
+    console.log('Application listening on 3000...');
 });
-
