@@ -1,14 +1,14 @@
 
-const http = require('http');
-const fs = require('fs');
+const express = require('express');
 
-http.createServer(function (request, response) {
-    fs.readFile('index.html', 'utf8', function (error, data) {
-        let message = 'Learning Node.js';
-        let header = 'Main page';
-        data = data.replace('{header}', header).replace('{message}', message);
-        response.end(data);
-    });
-}).listen(3000, function () {
-    console.log('Server listening on port 3000');
+const app = express();
+
+app.get('/', function (request, response) {
+    if(Object.keys(request.query).indexOf('exit') != -1) throw new Error('Exiting!!!');
+    response.send("<h2>Hello express framework!</h2>");
 });
+
+app.listen(3000, function () {
+    console.log('Listening on 3000');
+});
+
