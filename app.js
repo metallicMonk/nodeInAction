@@ -3,22 +3,19 @@ const express = require('express');
 
 const app = express();
 
-const responses = {
-    "/": "<h1>Main page</h1>",
-    "/about": "<h1>About page</h1>",
-    "/contact": "<h1>Contact page</h1>"
-};
+app.use(function (request, response) {
+    console.log('middleware 1');
+    request.next();
+});
+
+app.use(function (request, response) {
+    console.log('middleware 2');
+    request.next();
+});
 
 app.get('/', function (request, response) {
-    response.send(responses['/']);
-});
-
-app.get('/about', function (request, response) {
-    response.send(responses['/about']);
-});
-
-app.get('/contact', function (request, response) {
-    response.send(responses['/contact']);
+    console.log('Route /');
+    response.send({ "response": "some response" });
 });
 
 app.listen(3000, function () {
